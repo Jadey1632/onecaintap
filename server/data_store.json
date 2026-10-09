@@ -1,0 +1,251 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Hon. Maria Elena Nieto",
+      "email": "admin@cainta.gov.ph",
+      "password": "admin123",
+      "contact_number": "+63 917 888 1234",
+      "address": "Cainta Municipal Hall, Cainta, Rizal",
+      "barangay": "San Roque",
+      "role": "admin",
+      "created_at": "2026-10-04T20:43:26.454Z"
+    },
+    {
+      "id": 2,
+      "name": "Barangay Staff Officer",
+      "email": "staff@cainta.gov.ph",
+      "password": "staff123",
+      "contact_number": "+63 918 555 4321",
+      "address": "Barangay Hall, San Andres, Cainta, Rizal",
+      "barangay": "San Andres",
+      "role": "staff",
+      "created_at": "2026-10-04T20:43:26.454Z"
+    },
+    {
+      "id": 3,
+      "name": "John Doe",
+      "email": "john.doe@gmail.com",
+      "password": "password123",
+      "contact_number": "+63 920 456 6881",
+      "address": "10th St. Batumbakal, Cainta, Rizal",
+      "barangay": "San Roque",
+      "role": "resident",
+      "created_at": "2026-10-04T20:43:26.454Z"
+    },
+    {
+      "id": 4,
+      "name": "Maria Santos",
+      "email": "maria.santos@gmail.com",
+      "password": "password123",
+      "contact_number": "+63 928 111 2233",
+      "address": "Block 5 Lot 12 Karangalan Village, Cainta, Rizal",
+      "barangay": "Santo Domingo",
+      "role": "resident",
+      "created_at": "2026-10-04T20:43:26.454Z"
+    }
+  ],
+  "certificates_catalog": [
+    {
+      "id": "barangay_clearance",
+      "name": "Barangay Clearance",
+      "description": "Official document certifying good moral character, residency, and no derogatory record in the barangay. Required for local employment, police clearance, and postal ID.",
+      "fee": 50,
+      "processing_time": "1-2 Business Days",
+      "requirements": "1 Valid Government-Issued ID, Proof of Residency (Utility Bill or Lease Agreement)",
+      "icon": "ShieldCheck",
+      "is_active": 1
+    },
+    {
+      "id": "certificate_of_residency",
+      "name": "Certificate of Residency",
+      "description": "Proof of actual living residence in Cainta for government transactions, court appearances, banks, and utility applications.",
+      "fee": 50,
+      "processing_time": "1 Business Day",
+      "requirements": "1 Valid ID with local address or Barangay Voter Certification",
+      "icon": "Home",
+      "is_active": 1
+    },
+    {
+      "id": "certificate_of_indigency",
+      "name": "Certificate of Indigency",
+      "description": "Issued to low-income and underprivileged residents for medical assistance (DSWD/PCSO), legal aid (PAO), educational scholarships, or funeral assistance.",
+      "fee": 0,
+      "processing_time": "Same Day / 24 Hours",
+      "requirements": "Letter request stating specific purpose, Endorsement or Certificate of Low Income",
+      "icon": "HeartHandshake",
+      "is_active": 1
+    },
+    {
+      "id": "barangay_certification",
+      "name": "Barangay Certification",
+      "description": "General official certification for various legal or business requirements, lost documents, electric/water meter connection.",
+      "fee": 50,
+      "processing_time": "1-2 Business Days",
+      "requirements": "1 Valid ID, Supporting Documents depending on specific purpose",
+      "icon": "FileCheck",
+      "is_active": 1
+    },
+    {
+      "id": "barangay_id",
+      "name": "Barangay Resident ID Card",
+      "description": "Official laminated high-security photo ID recognized across Cainta establishments and local government transactions.",
+      "fee": 100,
+      "processing_time": "2-3 Business Days",
+      "requirements": "1 Valid Photo ID, Proof of 6-month minimum residency",
+      "icon": "CreditCard",
+      "is_active": 1
+    },
+    {
+      "id": "business_clearance",
+      "name": "Barangay Business Clearance",
+      "description": "Mandatory local clearance to secure a Mayor's Business Permit in Cainta for retail shops, sari-sari stores, and commercial offices.",
+      "fee": 250,
+      "processing_time": "2-3 Business Days",
+      "requirements": "DTI or SEC Registration, Contract of Lease or Land Title, Previous Year Business Permit",
+      "icon": "Briefcase",
+      "is_active": 1
+    },
+    {
+      "id": "first_time_jobseeker",
+      "name": "First Time Jobseeker Certificate (RA 11261)",
+      "description": "Free official barangay document issued to first-time job applicants exempting them from government document fees under Republic Act 11261.",
+      "fee": 0,
+      "processing_time": "1 Business Day",
+      "requirements": "Barangay Oath of Undertaking, Valid School ID or Birth Certificate",
+      "icon": "GraduationCap",
+      "is_active": 1
+    }
+  ],
+  "requests": [
+    {
+      "id": "REQ-2026-0001",
+      "user_id": 3,
+      "certificate_id": "barangay_clearance",
+      "purpose": "Local Employment Application at Cainta IT Hub",
+      "delivery_method": "pickup",
+      "pickup_date": "2026-10-06",
+      "pickup_time": "09:00 AM - 11:00 AM",
+      "delivery_address": "",
+      "delivery_contact": "",
+      "delivery_fee": 0,
+      "total_amount": 50,
+      "payment_method": "gcash",
+      "payment_status": "paid",
+      "payment_ref": "GCASH-99882211",
+      "id_document_url": null,
+      "proof_of_residency_url": null,
+      "status": "approved",
+      "admin_remarks": "Verified complete and clean record. Issued by Cainta LGU.",
+      "approved_by": 1,
+      "approved_at": "2026-10-03T20:43:26.454Z",
+      "certificate_number": "BC-CAIN-2026-0012",
+      "qr_code_hash": "CAIN-BC-2026-JOHN-DOE-VERIFIED",
+      "created_at": "2026-10-02T20:43:26.454Z",
+      "updated_at": "2026-10-03T20:43:26.454Z"
+    },
+    {
+      "id": "REQ-2026-0002",
+      "user_id": 3,
+      "certificate_id": "certificate_of_residency",
+      "purpose": "Bank Account Opening (BDO Cainta Branch)",
+      "delivery_method": "delivery",
+      "pickup_date": null,
+      "pickup_time": null,
+      "delivery_address": "10th St. Batumbakal, Cainta, Rizal",
+      "delivery_contact": "+63 920 456 6881",
+      "delivery_fee": 0,
+      "total_amount": 50,
+      "payment_method": "cash",
+      "payment_status": "unpaid",
+      "payment_ref": null,
+      "id_document_url": null,
+      "proof_of_residency_url": null,
+      "status": "pending",
+      "admin_remarks": null,
+      "approved_by": null,
+      "approved_at": null,
+      "certificate_number": null,
+      "qr_code_hash": null,
+      "created_at": "2026-10-04T16:43:26.454Z",
+      "updated_at": "2026-10-04T16:43:26.454Z"
+    },
+    {
+      "id": "REQ-2026-0003",
+      "user_id": 4,
+      "certificate_id": "certificate_of_indigency",
+      "purpose": "Medical Subsidy at Cainta Municipal Hospital",
+      "delivery_method": "pickup",
+      "pickup_date": "2026-10-05",
+      "pickup_time": "01:00 PM - 03:00 PM",
+      "delivery_address": "",
+      "delivery_contact": "",
+      "delivery_fee": 0,
+      "total_amount": 0,
+      "payment_method": "cash",
+      "payment_status": "waived",
+      "payment_ref": null,
+      "id_document_url": null,
+      "proof_of_residency_url": null,
+      "status": "reviewing",
+      "admin_remarks": "Social Welfare officer assigned for verification",
+      "approved_by": null,
+      "approved_at": null,
+      "certificate_number": null,
+      "qr_code_hash": null,
+      "created_at": "2026-10-03T20:43:26.454Z",
+      "updated_at": "2026-10-03T20:43:26.454Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-2026-0001",
+      "request_id": "REQ-2026-0001",
+      "user_id": 3,
+      "amount": 50,
+      "payment_method": "GCash",
+      "payment_status": "Paid Online",
+      "or_number": "OR-CAINTA-2026-0914",
+      "created_at": "2026-10-02T20:43:26.454Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "user_id": 3,
+      "title": "Clearance Approved! 🎉",
+      "message": "Your Barangay Clearance (REQ-2026-0001) has been approved and your official e-certificate is ready for download.",
+      "type": "success",
+      "is_read": 0,
+      "created_at": "2026-10-03T20:43:26.454Z"
+    },
+    {
+      "id": 2,
+      "user_id": 3,
+      "title": "Request Received",
+      "message": "Your Certificate of Residency request (REQ-2026-0002) was successfully submitted and is queued for verification.",
+      "type": "info",
+      "is_read": 1,
+      "created_at": "2026-10-04T16:43:26.454Z"
+    },
+    {
+      "id": 3,
+      "user_id": 4,
+      "title": "Under Review",
+      "message": "Your Certificate of Indigency application is currently being reviewed by Cainta Barangay Staff.",
+      "type": "info",
+      "is_read": 0,
+      "created_at": "2026-10-03T20:43:26.454Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "action": "APPROVAL",
+      "details": "Approved REQ-2026-0001 for John Doe (Barangay Clearance)",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-10-03T20:43:26.454Z"
+    }
+  ]
+}

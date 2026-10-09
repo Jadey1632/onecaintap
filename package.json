@@ -1,0 +1,16 @@
+{
+  "name": "onecaintap",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ONEcainTAP: A Digital Barangay Service Management System for Municipality of Cainta",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

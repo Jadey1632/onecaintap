@@ -1,0 +1,24 @@
+{
+  "name": "ONEcainTAP",
+  "short_name": "ONEcainTAP",
+  "description": "A Digital Barangay Service Management System for Cainta, Rizal",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#11139C",
+  "theme_color": "#11139C",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

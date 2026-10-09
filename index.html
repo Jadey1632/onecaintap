@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#11139C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="ONEcainTAP" />
+  <title>ONEcainTAP</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ================================================
+       SCREEN: SPLASH
+  ================================================ -->
+  <section id="screen-splash" class="screen auth-screen active">
+    <div class="top-header">
+      <div class="logo-seal" id="splash-seal-small">
+        <svg viewBox="0 0 60 60" width="60" height="60"><circle cx="30" cy="30" r="30" fill="#D9D9D9"/><text x="30" y="35" text-anchor="middle" font-size="9" fill="#11139C" font-weight="bold">CAINTA</text></svg>
+      </div>
+      <div class="header-text">
+        <h2>MUNICIPALITY OF CAINTA</h2>
+        <p>Province of Rizal</p>
+      </div>
+      <div class="app-brand">
+        <div class="one">ONE</div>
+        <div class="cain">CAIN</div>
+        <div style="display:flex;gap:0;line-height:1"><span class="ta">TA</span><svg width="12" height="12" viewBox="0 0 12 12" style="margin-top:6px;margin-left:2px"><circle cx="6" cy="6" r="6" fill="#F0DA42"/></svg></div>
+      </div>
+    </div>
+
+    <div class="splash-hero">
+      <div class="splash-seal">
+        <svg viewBox="0 0 160 160" width="160" height="160">
+          <circle cx="80" cy="80" r="80" fill="#D9D9D9"/>
+          <circle cx="80" cy="80" r="60" fill="none" stroke="#11139C" stroke-width="4"/>
+          <text x="80" y="72" text-anchor="middle" font-size="11" fill="#11139C" font-weight="bold">MUNICIPALITY OF</text>
+          <text x="80" y="88" text-anchor="middle" font-size="14" fill="#11139C" font-weight="bold">CAINTA</text>
+          <text x="80" y="104" text-anchor="middle" font-size="10" fill="#11139C">PROVINCE OF RIZAL</text>
+        </svg>
+      </div>
+      <div class="splash-title">
+        <h1>ONEcainTAP</h1>
+        <p>Digital Barangay Service Management</p>
+      </div>
+      <p class="splash-tagline">
+        Request barangay certificates and services<br/>anytime, anywhere — fast and easy.
+      </p>
+    </div>
+
+    <div class="splash-footer">
+      <button class="btn btn-primary" onclick="App.navigate('screen-signin')">Get Started</button>
+      <button class="btn btn-outline" onclick="App.navigate('screen-signin')">Sign In</button>
+    </div>
+
+    <div class="home-indicator"><div class="home-indicator-bar"></div></div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: SIGN IN
+  ================================================ -->
+  <section id="screen-signin" class="screen auth-screen">
+    <div class="top-header">
+      <div class="logo-seal">
+        <svg viewBox="0 0 60 60" width="60" height="60"><circle cx="30" cy="30" r="30" fill="#D9D9D9"/><text x="30" y="35" text-anchor="middle" font-size="9" fill="#11139C" font-weight="bold">CAINTA</text></svg>
+      </div>
+      <div class="header-text">
+        <h2>MUNICIPALITY OF CAINTA</h2>
+        <p>Province of Rizal</p>
+      </div>
+      <div class="app-brand">
+        <div class="one">ONE</div>
+        <div class="cain">CAIN</div>
+        <div class="ta">TA</div>
+      </div>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="Auth.showSignIn()">Sign In</button>
+      <button class="auth-tab" onclick="App.navigate('screen-register')">Sign Up</button>
+    </div>
+
+    <div class="auth-body">
+      <form class="auth-form" id="form-signin" onsubmit="Auth.signIn(event)">
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap">
+            <input type="email" id="signin-email" placeholder="example@gmail.com" autocomplete="email" required />
+          </div>
+          <span class="form-error" id="signin-email-err"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="signin-password" placeholder="••••••••••••••" autocomplete="current-password" required />
+            <button type="button" class="eye-btn" onclick="Auth.togglePwd('signin-password',this)">
+              <svg width="20" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <span class="form-error" id="signin-pass-err"></span>
+        </div>
+
+        <div style="text-align:right; margin-bottom:16px;">
+          <button type="button" class="form-link" onclick="App.navigate('screen-forgot')">Forgot password?</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Log in</button>
+
+        <div class="divider"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button type="button" class="btn btn-secondary" onclick="Auth.signInAdmin()">Sign in as Admin (Demo)</button>
+        </div>
+
+        <p class="auth-footer-text dark mt-16">
+          Don't have an account?
+          <button type="button" class="form-link" onclick="App.navigate('screen-register')">Sign Up</button>
+        </p>
+      </form>
+    </div>
+    <div class="home-indicator"><div class="home-indicator-bar" style="background:#ccc"></div></div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: REGISTER / CREATE ACCOUNT
+  ================================================ -->
+  <section id="screen-register" class="screen auth-screen">
+    <div class="top-header">
+      <button class="back-btn" onclick="App.navigate('screen-signin')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="header-text">
+        <h2>MUNICIPALITY OF CAINTA</h2>
+        <p>Province of Rizal</p>
+      </div>
+      <div class="app-brand">
+        <div class="one">ONE</div>
+        <div class="cain">CAIN</div>
+        <div class="ta">TA</div>
+      </div>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab" onclick="App.navigate('screen-signin')">Sign In</button>
+      <button class="auth-tab active">Sign Up</button>
+    </div>
+
+    <div class="auth-body">
+      <form class="auth-form" id="form-register" onsubmit="Auth.register(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="input-wrap">
+            <input type="text" id="reg-name" placeholder="Juan Dela Cruz" autocomplete="name" required />
+          </div>
+          <span class="form-error" id="reg-name-err"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Address</label>
+          <div class="input-wrap">
+            <input type="text" id="reg-address" placeholder="10th St. Batumbakal, Cainta, Rizal" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Contact Number</label>
+          <div class="input-wrap">
+            <input type="tel" id="reg-contact" placeholder="+63 920 456 7890" required />
+          </div>
+          <span class="form-error" id="reg-contact-err"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap">
+            <input type="email" id="reg-email" placeholder="example@gmail.com" autocomplete="email" required />
+          </div>
+          <span class="form-error" id="reg-email-err"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="reg-password" placeholder="••••••••••••••" autocomplete="new-password" required />
+            <button type="button" class="eye-btn" onclick="Auth.togglePwd('reg-password',this)">
+              <svg width="20" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <span class="form-error" id="reg-pass-err"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-8">Sign Up</button>
+
+        <p class="auth-footer-text dark mt-16">
+          Already have an account?
+          <button type="button" class="form-link" onclick="App.navigate('screen-signin')">Sign In</button>
+        </p>
+      </form>
+    </div>
+    <div class="home-indicator"><div class="home-indicator-bar" style="background:#ccc"></div></div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: FORGOT PASSWORD
+  ================================================ -->
+  <section id="screen-forgot" class="screen auth-screen">
+    <div class="top-header">
+      <button class="back-btn" onclick="App.navigate('screen-signin')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="header-text">
+        <h2>MUNICIPALITY OF CAINTA</h2>
+        <p>Province of Rizal</p>
+      </div>
+      <div class="app-brand">
+        <div class="one">ONE</div>
+        <div class="cain">CAIN</div>
+        <div class="ta">TA</div>
+      </div>
+    </div>
+
+    <div class="auth-body" style="border-radius:0;">
+      <form class="auth-form" id="form-forgot" onsubmit="Auth.forgotPassword(event)" style="align-items:center; padding-top:36px;">
+        <div style="text-align:center; margin-bottom:24px;">
+          <div style="font-size:48px; margin-bottom:12px;">🔑</div>
+          <h2 style="font-size:22px; font-weight:700; color:#000; margin-bottom:8px;">Forgot Password</h2>
+          <p style="font-size:13px; color:var(--gray); line-height:1.6; max-width:260px;">
+            Please enter your email address to receive a verification code
+          </p>
+        </div>
+
+        <div class="form-group" style="width:100%;">
+          <label>Email</label>
+          <div class="input-wrap">
+            <input type="email" id="forgot-email" placeholder="example@gmail.com" required />
+          </div>
+          <span class="form-error" id="forgot-err"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-8">Verify</button>
+        <button type="button" class="btn btn-outline mt-8" onclick="App.navigate('screen-signin')">Back to Login</button>
+      </form>
+    </div>
+    <div class="home-indicator"><div class="home-indicator-bar" style="background:#ccc"></div></div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: VERIFY CODE
+  ================================================ -->
+  <section id="screen-verify" class="screen auth-screen">
+    <div class="top-header">
+      <button class="back-btn" onclick="App.navigate('screen-forgot')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="header-text">
+        <h2>MUNICIPALITY OF CAINTA</h2>
+        <p>Province of Rizal</p>
+      </div>
+      <div class="app-brand">
+        <div class="one">ONE</div>
+        <div class="cain">CAIN</div>
+        <div class="ta">TA</div>
+      </div>
+    </div>
+
+    <div class="auth-body">
+      <form class="auth-form" id="form-verify" onsubmit="Auth.verifyCode(event)" style="align-items:center; padding-top:28px;">
+        <div style="text-align:center; margin-bottom:16px;">
+          <div style="font-size:48px; margin-bottom:12px;">📧</div>
+          <div style="background:var(--blue); border-radius:10px; padding:6px 16px; display:inline-block; margin-bottom:12px;">
+            <span style="font-size:14px; font-weight:700; color:var(--white);">Verify Code</span>
+          </div>
+          <p style="font-size:13px; color:var(--gray); line-height:1.6;">
+            Please enter the code we just sent to<br/>
+            <span style="color:var(--yellow-2); font-weight:600;" id="verify-email-display">your email</span>
+          </p>
+        </div>
+
+        <div class="otp-group">
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-0" oninput="Auth.otpNext(this,0)" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-1" oninput="Auth.otpNext(this,1)" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-2" oninput="Auth.otpNext(this,2)" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-3" oninput="Auth.otpNext(this,3)" />
+        </div>
+
+        <p style="font-size:13px; color:var(--gray); margin-bottom:16px; text-align:center;">
+          <button type="button" class="form-link" id="resend-btn" onclick="Auth.resendCode()">Send code again</button>
+          <span id="otp-timer" style="color:var(--gray); margin-left:4px;"> 00:34</span>
+        </p>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Verify</button>
+
+        <div class="form-group mt-16" style="width:100%;">
+          <label>New Password</label>
+          <div class="input-wrap">
+            <input type="password" id="new-password" placeholder="Enter new password" required />
+            <button type="button" class="eye-btn" onclick="Auth.togglePwd('new-password',this)">
+              <svg width="20" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="home-indicator"><div class="home-indicator-bar" style="background:#ccc"></div></div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: RESIDENT DASHBOARD
+  ================================================ -->
+  <section id="screen-resident" class="screen">
+    <div class="resident-header">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <p class="greeting">Good day,</p>
+          <h2 class="name" id="resident-name">Juan Dela Cruz</h2>
+          <p class="subtitle">Municipality of Cainta, Rizal</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px; color:rgba(255,255,255,0.6);" id="resident-date"></div>
+          <div style="background:var(--yellow); color:var(--black); border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; margin-top:4px;">Resident</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resident-body">
+      <p class="section-title">Quick Actions</p>
+      <div class="quick-actions">
+        <button class="quick-card" onclick="App.navigate('screen-certificates')">
+          <div class="qc-icon">📄</div>
+          <div class="qc-title">Request Certificate</div>
+          <div class="qc-sub">Barangay documents</div>
+        </button>
+        <button class="quick-card" onclick="Resident.showMyRequests()">
+          <div class="qc-icon yellow">📋</div>
+          <div class="qc-title">My Requests</div>
+          <div class="qc-sub">Track your status</div>
+        </button>
+        <button class="quick-card" onclick="App.navigate('screen-profile')">
+          <div class="qc-icon green">👤</div>
+          <div class="qc-title">My Profile</div>
+          <div class="qc-sub">Update info</div>
+        </button>
+        <button class="quick-card" onclick="Resident.showAnnouncements()">
+          <div class="qc-icon red">📢</div>
+          <div class="qc-title">Announcements</div>
+          <div class="qc-sub">News & updates</div>
+        </button>
+      </div>
+
+      <p class="section-title">Recent Requests</p>
+      <div id="resident-recent-requests">
+        <div class="empty-state">
+          <div class="es-icon">📭</div>
+          <p>No requests yet.<br/>Start by requesting a certificate.</p>
+          <button class="btn btn-primary btn-sm mt-8" onclick="App.navigate('screen-certificates')">Request Now</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="Resident.navTab('home',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" onclick="Resident.navTab('requests',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Requests</span>
+      </button>
+      <button class="nav-item" onclick="App.navigate('screen-certificates')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>New</span>
+      </button>
+      <button class="nav-item" onclick="Resident.navTab('track',this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Track</span>
+      </button>
+      <button class="nav-item" onclick="App.navigate('screen-profile')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ================================================
+       SCREEN: SELECT CERTIFICATE
+  ================================================ -->
+  <section id="screen-certificates" class="screen">
+    <div class="cert-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="back-btn" onclick="App.goBack()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div>
+          <h2>Select Certificate</h2>
+          <p>Choose the document you need</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-body">
+      <div class="cert-grid">
+        <button class="cert-item" onclick="Resident.selectCert('Barangay Clearance')">
+          <span class="cert-emoji">📋</span>
+          <div class="cert-info">
+            <div class="cert-name">Barangay Clearance</div>
+            <div class="cert-desc">General purpose clearance for residency</div>
+          </div>
+          <svg class="cert-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <button class="cert-item" onclick="Resident.selectCert('Certificate of Residency')">
+          <span class="cert-emoji">🏠</span>
+          <div class="cert-info">
+            <div class="cert-name">Certificate of Residency</div>
+            <div class="cert-desc">Proof of address and residence</div>
+          </div>
+          <svg class="cert-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <button class="cert-item" onclick="Resident.selectCert('Barangay Indigency')">
+          <span class="cert-emoji">📜</span>
+          <div class="cert-info">
+            <div class="cert-name">Barangay Indigency</div>
+            <div class="cert-desc">For low-income assistance programs</div>
+          </div>
+          <svg class="cert-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <button class="cert-item" onclick="Resident.selectCert('Certificate of Indigency')">
+          <span class="cert-emoji">📑</span>
+          <div class="cert-info">
+            <div class="cert-name">Certificate of Indigency</div>
+            <div class="cert-desc">Financial assistance certification</div>
+          </div>
+          <svg class="cert-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <button class="cert-item" onclick="Resident.selectCert('Business Clearance')">
+          <span class="cert-emoji">🏪</span>
+          <div class="cert-info">
+            <div class="cert-name">Business Clearance</div>
+            <div class="cert-desc">For business permit applications</div>
+          </div>
+          <svg class="cert-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: REQUEST FORM
+  ================================================ -->
+  <section id="screen-request-form" class="screen">
+    <div class="form-screen-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="back-btn" onclick="App.navigate('screen-certificates')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div>
+          <h2 id="req-form-title">Barangay Clearance</h2>
+          <p>Fill in required information</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form id="form-request" onsubmit="Resident.submitRequest(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="input-wrap">
+            <input type="text" id="req-fullname" placeholder="Juan Dela Cruz" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <div class="input-wrap">
+            <input type="date" id="req-dob" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Address</label>
+          <div class="input-wrap">
+            <input type="text" id="req-addr" placeholder="Street, Barangay, Cainta, Rizal" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Purpose</label>
+          <div class="input-wrap" style="position:relative;">
+            <select id="req-purpose" required>
+              <option value="">Select purpose…</option>
+              <option>Employment</option>
+              <option>School Requirement</option>
+              <option>Business Permit</option>
+              <option>Government Benefit</option>
+              <option>Travel / Visa</option>
+              <option>Bank / Loan Requirement</option>
+              <option>Other</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <div class="form-group" id="purpose-other-group" style="display:none;">
+          <label>Specify Purpose</label>
+          <div class="input-wrap">
+            <input type="text" id="req-purpose-other" placeholder="Please specify…" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Number of Copies</label>
+          <div class="input-wrap" style="position:relative;">
+            <select id="req-copies">
+              <option value="1">1 copy</option>
+              <option value="2">2 copies</option>
+              <option value="3">3 copies</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <p class="section-title mb-8">Delivery Method</p>
+
+        <div class="delivery-options">
+          <button type="button" class="delivery-opt selected" id="opt-pickup" onclick="Resident.selectDelivery('pickup')">
+            <span class="do-icon">🏢</span>
+            <span class="do-title">Pickup</span>
+            <span class="do-sub">Pick up at Barangay Hall</span>
+          </button>
+          <button type="button" class="delivery-opt" id="opt-delivery" onclick="Resident.selectDelivery('delivery')">
+            <span class="do-icon">🚚</span>
+            <span class="do-title">Delivery</span>
+            <span class="do-sub">Deliver to your address</span>
+          </button>
+        </div>
+
+        <div id="pickup-details" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label>Preferred Pickup Date</label>
+            <div class="input-wrap">
+              <input type="date" id="req-pickup-date" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Preferred Pickup Time</label>
+            <div class="input-wrap" style="position:relative;">
+              <select id="req-pickup-time">
+                <option>8:00 AM – 9:00 AM</option>
+                <option>9:00 AM – 10:00 AM</option>
+                <option>10:00 AM – 11:00 AM</option>
+                <option>1:00 PM – 2:00 PM</option>
+                <option>2:00 PM – 3:00 PM</option>
+                <option>3:00 PM – 4:00 PM</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="delivery-details" style="display:none; margin-bottom:16px;">
+          <div class="form-group">
+            <label>Delivery Address</label>
+            <div class="input-wrap">
+              <input type="text" id="req-delivery-addr" placeholder="Full delivery address" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contact Number for Delivery</label>
+            <div class="input-wrap">
+              <input type="tel" id="req-delivery-contact" placeholder="+63 920 456 7890" />
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: REQUEST SUBMITTED
+  ================================================ -->
+  <section id="screen-submitted" class="screen" style="background:#F5F5F5; justify-content:center; align-items:center; padding:32px;">
+    <div style="background:white; border-radius:24px; padding:32px 24px; width:100%; text-align:center; box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div style="font-size:64px; margin-bottom:16px;">✅</div>
+      <h2 style="font-size:22px; font-weight:700; color:#000; margin-bottom:8px;">Request Submitted!</h2>
+      <p style="font-size:14px; color:var(--gray); margin-bottom:24px; line-height:1.6;">
+        Your request has been submitted successfully. You will be notified once it is processed.
+      </p>
+      <div style="background:#EEF0FF; border-radius:14px; padding:16px; margin-bottom:24px;">
+        <p style="font-size:12px; color:var(--gray); margin-bottom:4px;">Request Number</p>
+        <p style="font-size:24px; font-weight:700; color:var(--blue);" id="submitted-reqnum">REQ-00001</p>
+        <p style="font-size:11px; color:var(--gray); margin-top:4px;" id="submitted-cert"></p>
+      </div>
+      <p style="font-size:12px; color:var(--gray); margin-bottom:24px;">
+        Processing time: <strong>3–5 business days</strong>
+      </p>
+      <button class="btn btn-primary mb-8" onclick="App.navigate('screen-track')">Track My Request</button>
+      <button class="btn btn-outline" onclick="App.navigate('screen-resident')">Back to Home</button>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: TRACK REQUEST
+  ================================================ -->
+  <section id="screen-track" class="screen" style="background:#F5F5F5;">
+    <div class="cert-header" style="padding-bottom:28px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="back-btn" onclick="App.goBack()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div>
+          <h2 style="font-size:20px;">Track Request</h2>
+          <p>Monitor your request status</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1; background:#F5F5F5; border-radius:24px 24px 0 0; margin-top:-14px; padding:20px 16px; overflow-y:auto;">
+      <div id="track-list">
+        <div class="empty-state">
+          <div class="es-icon">🔍</div>
+          <p>No active requests to track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: REQUEST DETAIL (Resident)
+  ================================================ -->
+  <section id="screen-req-detail" class="screen" style="background:#F5F5F5;">
+    <div class="cert-header" style="padding-bottom:28px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="back-btn" onclick="App.goBack()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div>
+          <h2 style="font-size:20px;" id="detail-title">Request Detail</h2>
+          <p id="detail-reqnum"></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1; background:white; border-radius:24px 24px 0 0; margin-top:-14px; padding:24px 20px; overflow-y:auto;">
+      <div id="detail-content"></div>
+      <div id="detail-actions" class="mt-16"></div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: PROFILE
+  ================================================ -->
+  <section id="screen-profile" class="screen" style="background:#F5F5F5;">
+    <div style="background:var(--blue); padding:24px 20px 32px; flex-shrink:0;">
+      <button class="back-btn" onclick="App.goBack()" style="margin-bottom:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="profile-avatar" id="profile-avatar">J</div>
+      <h2 style="text-align:center; font-size:20px; font-weight:700; color:white;" id="profile-name-display"></h2>
+      <p style="text-align:center; font-size:13px; color:rgba(255,255,255,0.7);" id="profile-email-display"></p>
+    </div>
+
+    <div style="flex:1; background:#F5F5F5; border-radius:24px 24px 0 0; margin-top:-14px; padding:20px 16px; overflow-y:auto;">
+      <div class="profile-section">
+        <div class="profile-item">
+          <span class="pi-icon">👤</span>
+          <span class="pi-label" id="pi-name"></span>
+        </div>
+        <div class="profile-item">
+          <span class="pi-icon">📧</span>
+          <span class="pi-label" id="pi-email"></span>
+        </div>
+        <div class="profile-item">
+          <span class="pi-icon">📱</span>
+          <span class="pi-label" id="pi-contact"></span>
+        </div>
+        <div class="profile-item">
+          <span class="pi-icon">🏠</span>
+          <span class="pi-label" id="pi-address"></span>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <div class="profile-item danger" onclick="Auth.signOut()">
+          <span class="pi-icon">🚪</span>
+          <span class="pi-label">Sign Out</span>
+          <span class="pi-arrow">›</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       SCREEN: ADMIN DASHBOARD
+  ================================================ -->
+  <section id="screen-admin" class="screen">
+    <div class="admin-header">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <p class="admin-role">Administrator</p>
+          <h2 class="admin-name">Admin Panel</h2>
+          <p style="font-size:12px; color:rgba(255,255,255,0.5);">ONEcainTAP — Cainta, Rizal</p>
+        </div>
+        <button onclick="Auth.signOut()" style="background:none; border:none; color:rgba(255,255,255,0.6); cursor:pointer; font-size:12px; font-family:var(--font-main);">Sign Out</button>
+      </div>
+    </div>
+
+    <div class="admin-body">
+      <div class="stat-row" id="admin-stats">
+        <div class="stat-card"><div class="stat-num" id="stat-pending">0</div><div class="stat-label">Pending</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-approved">0</div><div class="stat-label">Approved</div></div>
+        <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">Total</div></div>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+        <p class="section-title" style="margin:0;">All Requests</p>
+        <div style="display:flex; gap:6px;">
+          <button class="btn btn-sm" id="filter-all" style="background:var(--blue); color:white; border:none;" onclick="Admin.filterRequests('all',this)">All</button>
+          <button class="btn btn-sm" style="background:#FFF3CD; color:#856404; border:none;" onclick="Admin.filterRequests('pending',this)">Pending</button>
+        </div>
+      </div>
+
+      <div id="admin-req-list">
+        <div class="empty-state">
+          <div class="es-icon">📭</div>
+          <p>No requests yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav" style="background:var(--dark);">
+      <button class="nav-item active" style="color:var(--yellow);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span style="color:var(--yellow);">Dashboard</span>
+      </button>
+      <button class="nav-item" style="color:rgba(255,255,255,0.5);" onclick="Admin.filterRequests('pending',null)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>Requests</span>
+      </button>
+      <button class="nav-item" style="color:rgba(255,255,255,0.5);" onclick="Admin.signOut()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Sign Out</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- ================================================
+       SCREEN: ADMIN — REVIEW REQUEST
+  ================================================ -->
+  <section id="screen-admin-review" class="screen" style="background:#F0F0F0;">
+    <div style="background:var(--dark); padding:12px 20px 28px; flex-shrink:0;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="back-btn" style="color:var(--yellow);" onclick="App.navigate('screen-admin')">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div>
+          <h2 style="font-size:18px; font-weight:700; color:var(--yellow);">Review Request</h2>
+          <p style="font-size:12px; color:rgba(255,255,255,0.5);" id="admin-review-reqnum"></p>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1; background:white; border-radius:24px 24px 0 0; margin-top:-14px; padding:24px 20px; overflow-y:auto;">
+      <div id="admin-review-content"></div>
+
+      <div class="divider"></div>
+      <div id="admin-review-actions" style="display:flex; gap:12px; margin-top:16px;"></div>
+
+      <div id="admin-remarks-group" style="margin-top:16px; display:none;">
+        <div class="form-group">
+          <label>Remarks / Notes</label>
+          <textarea id="admin-remarks" rows="3" placeholder="Add remarks for rejection or notes for approval…" style="border-radius:16px; padding:14px 16px; border:1px solid #ccc; font-family:var(--font-main); font-size:13px; width:100%; resize:none; outline:none;"></textarea>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-success" id="confirm-approve-btn" onclick="Admin.confirmAction('approved')">✔ Confirm Approve</button>
+          <button class="btn btn-danger" id="confirm-reject-btn" onclick="Admin.confirmAction('rejected')" style="display:none;">✖ Confirm Reject</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       TOAST NOTIFICATION
+  ================================================ -->
+  <div class="toast" id="toast"></div>
+
+</div><!-- #app -->
+
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/resident.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
